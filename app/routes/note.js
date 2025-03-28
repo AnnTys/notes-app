@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class NoteRoute extends Route {
   @service notesStorage;
@@ -7,7 +7,13 @@ export default class NoteRoute extends Route {
   model(params) {
     const noteId = parseInt(params.note_id);
     return {
-      note: this.notesStorage.notes.find(note => note.id === noteId)
+      note: this.notesStorage.notes.find((note) => note.id === noteId),
     };
   }
+  actions = {
+    deleteNote(noteId) {
+      this.notesStorage.deleteNote(noteId);
+      this.router.transitionTo('index');
+    },
+  };
 }

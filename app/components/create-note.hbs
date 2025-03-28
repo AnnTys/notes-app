@@ -2,21 +2,21 @@
   <input
     type="text"
     class="border p-2 w-full mb-2"
-    placeholder="Назва"
+    placeholder="Label note"
     value={{this.title}}
     {{on "input" this.updateTitle}}
   />
   <input
     type="text"
     class="border p-2 w-full mb-2"
-    placeholder="Створіть нотатку..."
+    placeholder="Take a note..."
     value={{this.content}}
     {{on "input" this.updateContent}}
   />
   <button
     type="submit"
     class="bg-blue-500 text-white px-4 py-2 rounded"
-  >Закрити</button>
+  >Save</button>
 </form>
 
 

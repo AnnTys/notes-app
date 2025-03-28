@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 
 export default class CreateNote extends Component {
   @service notesStorage;
@@ -22,13 +22,11 @@ export default class CreateNote extends Component {
     }
   }
 
-  @action
-  updateTitle(event) {
+  @action updateTitle(event) {
     this.title = event.target.value;
   }
 
-  @action
-  updateContent(event) {
+  @action updateContent(event) {
     this.content = event.target.value;
   }
 }

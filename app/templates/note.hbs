@@ -1,29 +1,29 @@
-{{!-- <div>
+<div>
   {{#if this.model.note}}
     {{#if this.isEditing}}
-      <form {{on "submit" this.saveNote}}>
+      <form {{on "submit" this.saveNote}} >
         <input
           type="text"
           class="border p-2 w-full mb-2"
           placeholder="Назва"
           value={{this.editedTitle}}
-          {{on "input" (fn (mut this.editedTitle) target.value)}}
+          {{on "input" this.updateEditedTitle}}
         />
         <textarea
           class="border p-2 w-full mb-2"
           placeholder="Нотатка"
           value={{this.editedContent}}
-          {{on "input" (fn (mut this.editedContent) target.value)}}
+          {{on "input" this.updateEditedContent}}
         ></textarea>
         <button
           type="submit"
           class="bg-blue-500 text-white px-4 py-2 rounded"
-        >Зберегти</button>
+        >Save</button>
         <button
           type="button"
           class="bg-blue-500 text-white px-4 py-2 rounded"
           {{on "click" this.cancelEdit}}
-        >Скасувати</button>
+        >Cancel</button>
       </form>
     {{else}}
       <div>
@@ -34,71 +34,18 @@
             {{on "click" this.startEdit}}
             class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
           >
-            Редагувати
+            Edit
           </button>
           <button
-            {{on "click" this.deleteNote }}
+            {{on "click" this.deleteNote}}
             class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
           >
-            Видалити
+            Delete
           </button>
         </div>
       </div>
     {{/if}}
   {{else}}
-    <p class="text-center text-gray-500">Нотатку не знайдено</p>
-  {{/if}}
-</div> --}}
-
-
-<div>
-  {{#if this.model.note}}
-    {{#if this.isEditing}}
-      <form >
-        <input
-          type="text"
-          class="border p-2 w-full mb-2"
-          placeholder="Назва"
-          
-          
-        />
-        <textarea
-          class="border p-2 w-full mb-2"
-          placeholder="Нотатка"
-          
-          
-        ></textarea>
-        <button
-          type="submit"
-          class="bg-blue-500 text-white px-4 py-2 rounded"
-        >Зберегти</button>
-        <button
-          type="button"
-          class="bg-blue-500 text-white px-4 py-2 rounded"
-          
-        >Скасувати</button>
-      </form>
-    {{else}}
-      <div>
-        <h1 class="text-2xl font-bold">{{this.model.note.title}}</h1>
-        <p class="mt-4">{{this.model.note.content}}</p>
-        <div>
-          <button
-            {{on "click" this.startEdit}}
-            class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-          >
-            Редагувати
-          </button>
-          <button
-            
-            class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-          >
-            Видалити
-          </button>
-        </div>
-      </div>
-    {{/if}}
-  {{else}}
-    <p class="text-center text-gray-500">Нотатку не знайдено</p>
+    <p class="text-center text-gray-500">404</p>
   {{/if}}
 </div>
