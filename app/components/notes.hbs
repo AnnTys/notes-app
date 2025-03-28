@@ -1,0 +1,8 @@
+<div>
+    {{#each this.sortedNotes as |note|}}
+    <div {{on 'click' (fn this.selectNote note)}}>
+        <h3 class="font-bold">{{note.title}}</h3>
+        <p>{{note.content}}</p>
+    </div>
+    {{/each}}
+</div>

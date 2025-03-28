@@ -1,0 +1,23 @@
+<form {{on "submit" this.handleSubmit}}>
+  <input
+    type="text"
+    class="border p-2 w-full mb-2"
+    placeholder="Назва"
+    value={{this.title}}
+    {{on "input" this.updateTitle}}
+  />
+  <input
+    type="text"
+    class="border p-2 w-full mb-2"
+    placeholder="Створіть нотатку..."
+    value={{this.content}}
+    {{on "input" this.updateContent}}
+  />
+  <button
+    type="submit"
+    class="bg-blue-500 text-white px-4 py-2 rounded"
+  >Закрити</button>
+</form>
+
+
+    
