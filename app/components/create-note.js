@@ -7,6 +7,7 @@ export default class CreateNote extends Component {
   @service notesStorage;
   @tracked title = '';
   @tracked content = '';
+  @tracked isExpanded = false;
 
  
 
@@ -28,5 +29,9 @@ export default class CreateNote extends Component {
 
   @action updateContent(event) {
     this.content = event.target.value;
+  }
+
+  @action expandForm() {
+    this.isExpanded = true;
   }
 }

@@ -1,51 +1,57 @@
-<div>
+
   {{#if this.model.note}}
-    {{#if this.isEditing}}
-      <form {{on "submit" this.saveNote}} >
-        <input
-          type="text"
-          class="border p-2 w-full mb-2"
-          placeholder="Назва"
-          value={{this.editedTitle}}
-          {{on "input" this.updateEditedTitle}}
-        />
-        <textarea
-          class="border p-2 w-full mb-2"
-          placeholder="Нотатка"
-          value={{this.editedContent}}
-          {{on "input" this.updateEditedContent}}
-        ></textarea>
-        <button
-          type="submit"
-          class="bg-blue-500 text-white px-4 py-2 rounded"
-        >Save</button>
-        <button
-          type="button"
-          class="bg-blue-500 text-white px-4 py-2 rounded"
-          {{on "click" this.cancelEdit}}
-        >Cancel</button>
-      </form>
-    {{else}}
-      <div>
-        <h1 class="text-2xl font-bold">{{this.model.note.title}}</h1>
-        <p class="mt-4">{{this.model.note.content}}</p>
-        <div>
-          <button
-            {{on "click" this.startEdit}}
-            class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-          >
-            Edit
-          </button>
-          <button
-            {{on "click" this.deleteNote}}
-            class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-          >
-            Delete
-          </button>
-        </div>
-      </div>
+    {{#if this.isModalOpen}}
+      <Modal @onClose={{this.closeModal}}>
+
+        {{#if this.isEditing}}
+          <form {{on "submit" this.saveNote}}>
+            <input
+              type="text"
+              class="border p-2 w-full mb-2"
+              placeholder="Назва"
+              value={{this.editedTitle}}
+              {{on "input" this.updateEditedTitle}}
+            />
+            <textarea
+              class="border p-2 w-full mb-2"
+              placeholder="Нотатка"
+              value={{this.editedContent}}
+              {{on "input" this.updateEditedContent}}
+            ></textarea>
+            <button
+              type="submit"
+              class="bg-blue-500 text-white px-4 py-2 rounded"
+            >Save</button>
+            <button
+              type="button"
+              class="bg-blue-500 text-white px-4 py-2 rounded"
+              {{on "click" this.cancelEdit}}
+            >Cancel</button>
+          </form>
+        {{else}}
+          <div>
+            <h1 class="text-2xl font-bold">{{this.model.note.title}}</h1>
+            <p class="mt-4">{{this.model.note.content}}</p>
+            <div>
+              <button
+                class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                type="button"
+                {{on "click" this.startEdit}}
+              >
+                Edit
+              </button>
+              <button
+                class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                type="button"
+                {{on "click" this.deleteNote}}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        {{/if}}
+      </Modal>
     {{/if}}
   {{else}}
-    <p class="text-center text-gray-500">404</p>
+    <p class="text-center text-gray-500">Page not found</p>
   {{/if}}
-</div>

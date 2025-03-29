@@ -16,4 +16,11 @@ export default class NoteRoute extends Route {
       this.router.transitionTo('index');
     },
   };
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    
+    if (model.note) {
+      controller.openModal();
+    }
+  }
 }

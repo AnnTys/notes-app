@@ -6,17 +6,25 @@ import { tracked } from '@glimmer/tracking';
 export default class NoteController extends Controller {
   @service notesStorage;
   @service router;
+
+  @tracked isModalOpen = false;
   @tracked isEditing = false;
   @tracked editedTitle = '';
   @tracked editedContent = '';
 
-  @action
-  updateEditedTitle(event) {
+  @action openModal() {
+    this.isModalOpen = true;
+  }
+  
+  @action closeModal() {
+    this.isModalOpen = false;
+    this.router.transitionTo('index')
+  }
+  @action updateEditedTitle(event) {
     this.editedTitle = event.target.value;
   }
 
-  @action
-  updateEditedContent(event) {
+  @action updateEditedContent(event) {
     this.editedContent = event.target.value;
   }
 
@@ -41,13 +49,15 @@ export default class NoteController extends Controller {
         this.editedContent
       );
       this.isEditing = false;
-      this.router.transitionTo('index');
+      this.closeModal();
+      // this.router.transitionTo('index');
     }
   }
 
   @action deleteNote() {
     this.notesStorage.deleteNote(this.model.note.id);
-    this.router.transitionTo('index');
+    this.closeModal();
+    // this.router.transitionTo('index');
   }
 
 }

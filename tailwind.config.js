@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     content: [
       "./app/components/**/*.{js,hbs}",
       "./app/templates/**/*.hbs",
