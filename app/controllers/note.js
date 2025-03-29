@@ -50,14 +50,14 @@ export default class NoteController extends Controller {
       );
       this.isEditing = false;
       this.closeModal();
-      // this.router.transitionTo('index');
+      this.router.transitionTo('index');
     }
   }
 
   @action deleteNote() {
     this.notesStorage.deleteNote(this.model.note.id);
     this.closeModal();
-    // this.router.transitionTo('index');
+    this.router.transitionTo('index');
   }
 
 }

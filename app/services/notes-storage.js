@@ -23,6 +23,9 @@ export default class NotesStorageService extends Service {
   }
 
   createNote(title, content) {
+    if (!title.trim() && !content.trim()) {
+      throw new Error('Title and content cannot be empty');
+    }
     const newNote = {
       id: Date.now(),
       title,

@@ -1,6 +1,6 @@
-<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
-    <button class="absolute top-2 right-2 text-gray-600 hover:text-black" {{on "click" this.closeModal}}>✖</button>
+<div class="fixed inset-0 flex items-center justify-center " {{on "click" this.handleBackdropClick}}>
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl relative" {{on "click" this.stopPropagation}}>
+    <button class="absolute top-2 right-2 text-xl text-accent-400 font-extrabold hover:text-accent-500" {{on "click" this.closeModal}}>X</button>
     {{yield}}
   </div>
 </div>

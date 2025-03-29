@@ -34,4 +34,10 @@ export default class CreateNote extends Component {
   @action expandForm() {
     this.isExpanded = true;
   }
+
+  @action handleBackdropFormClick(event) {
+    if (event.target === event.currentTarget) {
+      this.isExpanded = false
+    }
+  }
 }

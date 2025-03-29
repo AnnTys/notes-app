@@ -3,6 +3,7 @@ import { service } from '@ember/service';
 
 export default class NoteRoute extends Route {
   @service notesStorage;
+  @service router;
 
   model(params) {
     const noteId = parseInt(params.note_id);
@@ -21,6 +22,11 @@ export default class NoteRoute extends Route {
     
     if (model.note) {
       controller.openModal();
+    }
+  }
+  resetController(controller, isExiting) {
+    if (isExiting) {
+      controller.isModalOpen = false;
     }
   }
 }

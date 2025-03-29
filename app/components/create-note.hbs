@@ -1,33 +1,35 @@
-<div class="container px-5 py-15 mx-auto">
-  <form
-    {{on "submit" this.handleSubmit}}
-    class="flex flex-col text-center w-full mb-20"
-  >
-    {{#if this.isExpanded}}
+<div {{on "click" this.handleBackdropFormClick}} >
+  <div class="container px-5 pt-10 mx-auto"  >
+    <form
+      {{on "submit" this.handleSubmit}}
+      class="flex flex-col text-center w-full"
+    >
+      {{#if this.isExpanded}}
+        <div class="mb-4">
+          <input
+            type="text"
+            class="block w-full p-2 text-gray-700 border border-gray-300 rounded-lg bg-gray-50 text-l font-bold hover:bg-gray-100 focus:outline-offset-0 focus:outline-2 focus:outline-gray-500"
+            placeholder="Label note"
+            value={{this.title}}
+            {{on "input" this.updateTitle}}
+          /></div>
+      {{/if}}
       <div class="mb-4">
         <input
           type="text"
-          class="block w-full p-2 text-gray-700 border border-gray-300 rounded-lg bg-gray-50 text-l font-bold hover:bg-gray-100 focus:outline-offset-1 focus:outline-gray-500 "
-          placeholder="Label note"
-          value={{this.title}}
-          {{on "input" this.updateTitle}}
+          class="block w-full p-4 text-gray-700 border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 text-base focus:outline-offset-0 focus:outline-2 focus:outline-accent-500"
+          placeholder="Take a note..."
+          value={{this.content}}
+          {{on "input" this.updateContent}}
+          {{on "focus" this.expandForm}}
         /></div>
-    {{/if}}
-    <div class="mb-4">
-      <input
-        type="text"
-        class="block w-full p-4 text-gray-700 border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 text-base focus:outline-offset-1 focus:outline-gray-500"
-        placeholder="Take a note..."
-        value={{this.content}}
-        {{on "input" this.updateContent}}
-        {{on "focus" this.expandForm}}
-      /></div>
-    {{#if this.isExpanded}}
-      
+      {{#if this.isExpanded}}
+
         <button
           type="submit"
-          class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          class="focus:outline-none text-white bg-accent-400 hover:bg-accent-500 focus:ring-4 focus:ring-accent-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
         >Save</button>
-    {{/if}}
-  </form>
+      {{/if}}
+    </form>
+  </div>
 </div>
