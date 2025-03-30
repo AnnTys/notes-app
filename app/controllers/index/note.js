@@ -17,6 +17,7 @@ export default class IndexNoteController extends Controller {
   }
 
   @action closeModal() {
+    this.isEditing = false;
     this.isModalOpen = false;
     this.router.transitionTo('index');
   }
@@ -48,7 +49,6 @@ export default class IndexNoteController extends Controller {
         this.editedTitle,
         this.editedContent,
       );
-      this.isEditing = false;
       this.closeModal();
     }
   }
