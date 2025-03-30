@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
-export default class NoteController extends Controller {
+export default class IndexNoteController extends Controller {
   @service notesStorage;
   @service router;
 
@@ -15,10 +15,10 @@ export default class NoteController extends Controller {
   @action openModal() {
     this.isModalOpen = true;
   }
-  
+
   @action closeModal() {
     this.isModalOpen = false;
-    this.router.transitionTo('index')
+    this.router.transitionTo('index');
   }
   @action updateEditedTitle(event) {
     this.editedTitle = event.target.value;
@@ -44,20 +44,17 @@ export default class NoteController extends Controller {
     event.preventDefault();
     if (this.editedTitle.trim() && this.editedContent.trim()) {
       this.notesStorage.updateNote(
-        this.model.note.id, 
-        this.editedTitle, 
-        this.editedContent
+        this.model.note.id,
+        this.editedTitle,
+        this.editedContent,
       );
       this.isEditing = false;
       this.closeModal();
-      this.router.transitionTo('index');
     }
   }
 
   @action deleteNote() {
     this.notesStorage.deleteNote(this.model.note.id);
     this.closeModal();
-    this.router.transitionTo('index');
   }
-
 }

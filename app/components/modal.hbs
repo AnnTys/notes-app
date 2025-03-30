@@ -1,4 +1,4 @@
-<div class="fixed inset-0 flex items-center justify-center " {{on "click" this.handleBackdropClick}}>
+<div class="fixed inset-0 flex items-center justify-center bg-primary-300/50 bg-opacity-" {{on "click" this.handleBackdropClick}}>
   <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl relative" {{on "click" this.stopPropagation}}>
     <button class="absolute top-2 right-2 text-xl text-accent-400 font-extrabold hover:text-accent-500" {{on "click" this.closeModal}}>X</button>
     {{yield}}

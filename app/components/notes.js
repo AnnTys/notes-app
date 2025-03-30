@@ -6,7 +6,6 @@ import { tracked } from '@glimmer/tracking';
 export default class Notes extends Component {
   @service router;
   @service notesStorage;
-  @tracked selectedNote = null;
 
   get sortedNotes() {
     return [...this.notesStorage.notes].sort(
@@ -14,9 +13,7 @@ export default class Notes extends Component {
     );
   }
 
-  @action
-  selectNote(note) {
-    this.selectedNote = note;
-    this.router.transitionTo('note', note.id);
+  @action selectNote(note) {
+    this.router.transitionTo('index.note', note.id);
   }
 }

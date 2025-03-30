@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
-export default class NoteRoute extends Route {
+export default class IndexNoteRoute extends Route {
   @service notesStorage;
   @service router;
 
@@ -11,15 +11,9 @@ export default class NoteRoute extends Route {
       note: this.notesStorage.notes.find((note) => note.id === noteId),
     };
   }
-  actions = {
-    deleteNote(noteId) {
-      this.notesStorage.deleteNote(noteId);
-      this.router.transitionTo('index');
-    },
-  };
   setupController(controller, model) {
     super.setupController(controller, model);
-    
+
     if (model.note) {
       controller.openModal();
     }
