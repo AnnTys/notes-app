@@ -8,19 +8,23 @@ export default class CreateNote extends Component {
   @tracked title = '';
   @tracked content = '';
   @tracked isExpanded = false;
-
- 
+  @tracked isEmpty = false;
 
   @action handleSubmit(event) {
     event.preventDefault();
 
-    try {
-      this.notesStorage.createNote(this.title, this.content);
-      this.title = '';
-      this.content = '';
-    } catch (error) {
-      console.error('Error saving to localStorage:', error);
+    const result = this.notesStorage.createNote(this.title, this.content);
+
+    if (!result) {
+      this.isEmpty = true;
+      setTimeout(() => {
+        this.isEmpty = false;
+      }, 600);
+      return;
     }
+    this.title = '';
+    this.content = '';
+    this.isExpanded = false;
   }
 
   @action updateTitle(event) {
@@ -37,7 +41,9 @@ export default class CreateNote extends Component {
 
   @action handleBackdropFormClick(event) {
     if (event.target === event.currentTarget) {
-      this.isExpanded = false
+      this.isExpanded = false;
+      this.title = '';
+      this.content = '';
     }
   }
 }

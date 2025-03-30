@@ -1,8 +1,8 @@
-<div class="flex flex-wrap justify-evenly py-10">
+<div class="flex flex-wrap justify-evenly py-10 overflow-hidden will-change-transform" >
   {{#each this.sortedNotes as |note|}}
-    <div {{on "click" (fn this.selectNote note)}} class="p-2 grow min-w-64  ">
+    <div {{on "click" (fn this.selectNote note)}} class="p-2 grow min-w-64">
       <div
-        class="h-full bg-gray-100 bg-opacity-75 px-6 pt-10 pb-10 rounded-lg text-center hover:bg-primary-200 "
+        class="h-full bg-gray-100 px-10 py-10 rounded-lg text-center hover:bg-primary-200 hover:shadow-lg transform transition-all duration-300 hover:scale-102 animate-[fadeInUp_0.5s_ease-out] "
       >
         <h3 class="font-bold">{{note.title}}</h3>
 

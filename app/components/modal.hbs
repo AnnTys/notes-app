@@ -1,6 +1,27 @@
-<div class="fixed inset-0 flex items-center justify-center bg-primary-300/50 bg-opacity-" {{on "click" this.handleBackdropClick}}>
-  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl relative" {{on "click" this.stopPropagation}}>
-    <button class="absolute top-2 right-2 text-xl text-accent-400 font-extrabold hover:text-accent-500" {{on "click" this.closeModal}}>X</button>
+<div
+  class="fixed inset-0 flex items-center justify-center bg-primary-300/50
+    {{if
+      this.isVisible
+      'animate-[fadeIn_0.5s_ease-out]'
+      'animate-[fadeOut_0.5s_ease-out]'
+    }}"
+  {{on "click" this.handleBackdropClick}}
+  {{did-insert this.handleDidInsert}}
+>
+  <div
+    class="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl relative transition-all duration-300 hover:shadow-xl
+      {{if
+        this.isVisible
+        'animate-[slideIn_0.5s_ease-out]'
+        'animate-[slideOut_0.5s_ease-out]'
+      }}
+      "
+    {{on "click" this.stopPropagation}}
+  >
+    <button
+      class="absolute top-2 right-2 text-xl text-accent-400 font-extrabold hover:text-accent-500"
+      {{on "click" this.closeModal}}
+    >X</button>
     {{yield}}
   </div>
 </div>
